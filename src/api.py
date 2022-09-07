@@ -1,6 +1,7 @@
-from flask import Flask, jsonify, request
 import os
 import shutil
+
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -39,4 +40,4 @@ def run_scanner():
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(host='0.0.0.0', port=80)
