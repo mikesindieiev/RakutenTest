@@ -1,3 +1,4 @@
+import json
 import os
 import shutil
 
@@ -8,7 +9,10 @@ app = Flask(__name__)
 
 @app.route('/', methods=['GET'])
 def fetch_response():
-    return jsonify({"message": 'Hello from get'})
+    # ToDo: add check is file exist
+    with open('report.json', 'r') as f:
+        report_json = json.load(f)
+    return report_json
 
 
 @app.route('/', methods=['POST'])
@@ -34,8 +38,9 @@ def run_scanner():
     code_dir = source_code_url.split('/')[-1]
     shutil.rmtree(code_dir, ignore_errors=True)
 
-    # Clone the repo
+    # Execute scan. ToDo: move hardcoded values to variables
     os.system('git clone {0}'.format(source_code_url))
+    os.system('/usr/src/app/bin/brakeman ./ruby-project -o report.json')
     return jsonify({"message": "success"})
 
 
