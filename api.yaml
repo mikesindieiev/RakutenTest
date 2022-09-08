@@ -1,0 +1,80 @@
+openapi: 3.0.3
+info:
+  title: API for scanner
+  description: |-
+    This is API to run **brakeman** scanner 
+    
+    Some useful links:
+    - [https://github.com/presidentbeef/brakeman](https://github.com/presidentbeef/brakeman)
+    - [https://hub.docker.com/r/presidentbeef/brakeman](https://hub.docker.com/r/presidentbeef/brakeman)
+    - [https://brakemanscanner.org/docs/](https://brakemanscanner.org/docs/)
+    - [https://github.com/manojbinjola/ruby-project](https://github.com/manojbinjola/ruby-project)
+  contact:
+    email: m.sindeev@gmail.com
+  version: 0.0.1
+  
+
+servers:
+  - url: http://127.0.0.1:80/
+  
+tags:
+  - name: Scanner
+    description: Run scan against the ruby code
+    externalDocs:
+      description: Find out more
+      url: https://github.com/presidentbeef/brakeman
+      
+      
+paths:
+  /:
+    get:
+      tags:
+        - Scanner
+      summary: Get the report
+      description: Returns report from the server
+      responses:
+        '200':
+          description: successful operation
+        '404':
+          description: File not found
+
+
+    post:
+      tags:
+        - Scanner
+      summary: Run the scanner
+      description: Run the scanner against the ruby code
+      requestBody:
+        description: Run scan
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RunScan'
+        required: true
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RunScan'          
+        '400':
+          description: Invalid input
+
+components:
+  schemas:
+    RunScan:
+      type: object
+      properties:
+        source_code_url:
+          type: string
+          description: SCM repo with the code to scan
+          example: https://github.com/manojbinjola/ruby-project
+        lang:
+          type: string
+          description: Code Programming language 
+          example: ruby
+        scanner_name:
+          type: string
+          description: Scanner name
+          example: brakeman
