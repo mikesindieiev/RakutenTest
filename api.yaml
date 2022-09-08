@@ -15,8 +15,9 @@ info:
   
 
 servers:
-  - url: http://127.0.0.1:80/
-  
+  - url: http://replace.me
+  - url: http://localhost:80
+
 tags:
   - name: Scanner
     description: Run scan against the ruby code
