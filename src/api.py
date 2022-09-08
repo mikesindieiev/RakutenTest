@@ -16,6 +16,7 @@ logging.basicConfig(format='%(asctime)s-%(levelname)s-%(message)s',
 
 @app.route('/', methods=['GET'])
 def fetch_response():
+    # Return the scan result to the user. If it is not present - return 404
     try:
         with open(report_file, 'r') as f:
             report_json = json.load(f)
@@ -41,6 +42,7 @@ def run_scanner():
     lang = None
     scanner_name = None
 
+    # Parse the input data and verify that all fields are present. If no - return the error to user
     error_message_tmlpt = Template("Error. $missing_field field is missed in request JSON")
     fields = ['source_code_url', 'lang', 'scanner_name']
     if data:
