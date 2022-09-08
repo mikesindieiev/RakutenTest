@@ -70,6 +70,7 @@ def run_scanner():
     shutil.rmtree(code_dir, ignore_errors=True)
 
     # Execute scan.
+    # TODO: add verification for the url
     os.system('git clone {0}'.format(source_code_url))
     app.logger.debug("Cloned the repo")
 
