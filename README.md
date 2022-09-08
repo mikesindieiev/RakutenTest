@@ -14,7 +14,7 @@ When **POST** request received, API will trigger git command to clone the fresh 
 
 To run the container with API, run the following command:
 
-`> docker run -it -p 80:80 mikesindieiev/api-scanner`
+`docker run -itd -p 80:80 --name api-scanner mikesindieiev/api-scanner`
 
 Running container will bound to localhost ip address and expose 80 port with API
 
@@ -58,4 +58,3 @@ If JSON object from **POST** method from happy path is missing one field, then A
 **POST** Empty body request
 
 If JSON object from **POST** method from happy path is missing all filds, then API should return 400 http code and message that no data was received
-
