@@ -1,0 +1,116 @@
+{
+	"info": {
+		"_postman_id": "b7a04a8e-98a4-4af6-9efc-880a017e87e9",
+		"name": "API_scanner",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "7599285"
+	},
+	"item": [
+		{
+			"name": "Get report",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "127.0.0.1:80",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "80"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Run scan",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"source_code_url\": \"https://github.com/manojbinjola/ruby-project\",\n    \"lang\": \"ruby\",\n    \"scanner_name\": \"brakeman\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:80",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "80"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Missing field request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"source_code_url\": \"https://github.com/manojbinjola/ruby-project\",\n    \"scanner_name\": \"brakeman\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:80",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "80"
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Empty body request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "127.0.0.1:80",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "80"
+				}
+			},
+			"response": []
+		}
+	]
+}
